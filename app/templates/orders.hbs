@@ -1,0 +1,57 @@
+<div class="row form-group-lg" style="padding: 10px; background-color: #FF9900;">
+  <div class="col-sm-5">
+    {{input type="input" value=customerName classNames="form-control input-lg"}}
+  </div>
+  <div class="col-sm-5">
+    {{input type="input" value=customerEmail classNames="form-control input-lg"}}
+  </div>
+  <div class="col-sm-2">
+    {{input type="input" value=zipCode classNames="form-control input-lg"}}
+  </div>
+</div>
+
+<div class="row form-group-lg" style="padding: 10px; background-color: #FF9900;">
+  <div class="col-sm-5">
+    {{view "select" value=salesClerk content=controllers.application.clerkNames classNames="form-control"}}
+  </div>
+  <div class="col-sm-5">
+    {{view "select" value=paymentType content=controllers.application.payMethods classNames="form-control"}}
+  </div>
+  <div class="col-sm-2">
+    <label><h3 class="text-center">{{orderNumber}}</h3></label>
+  </div>
+</div>
+
+<table class="table table-bordered" style="border: 2px;">
+  <tbody>
+    <tr>
+      <td class="col-sm-1"></td>
+      <td class="col-sm-1"><h3>Qty</h3></td>
+      <td class="col-sm-5"><h3>Category</h3></td>
+      <td class="col-sm-1 text-right" ><h3>Cost</h3></td>
+      <td class="col-sm-1 text-right"><h3>Tax</h3></td>
+      <td class="col-sm-1 text-right"><h3>Total</h3></td>
+    </tr>
+
+    {{#each orderline in orderlines}}
+      {{order-line orderline=orderline tagName=''}}
+    {{/each}}
+
+    <tr>
+      <td class="col-sm-1 text-center">
+        <button type="button" {{action 'newOrderLine'}} class="buttonVisible btn btn-default btn-lg plusButton">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+      </td>
+      <td class="col-sm-11" colspan="5">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="col-sm-10 text-center" colspan="5">
+        <button id="completeOrderButton" class="btn completeOrderButton" onclick="completeOrderDialog(); return false;">
+          COMPLETE ORDER
+        </button>
+      </td>
+      <td class="col-sm-2 text-right lead">{{orderTotal}}</td>
+    </tr>
+  </tbody>
+</table>
