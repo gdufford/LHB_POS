@@ -6,7 +6,7 @@ var orderline = DS.Model.extend({
   cost: DS.attr('number'),
   tax: DS.attr('number'),
   total: DS.attr('number'),
-  order: DS.belongsTo('orders',{inverse: orderline})
+  order: DS.belongsTo('order',{inverse: orderline})
 });
 
 orderline.reopenClass({ FIXTURES:[]});
