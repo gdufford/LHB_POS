@@ -9,4 +9,4 @@ Router.map(function() {
   this.resource('order',{}, function(){});
 });
 
-export default Router; 
+export default Router;

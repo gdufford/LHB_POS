@@ -1,4 +1,7 @@
+//-- model/orderline.js --//
+
 import DS from 'ember-data';
+//import currency from 'currency';
 
 var orderline = DS.Model.extend({
   quantity: DS.attr('number'),
@@ -6,16 +9,15 @@ var orderline = DS.Model.extend({
   cost: DS.attr('number'),
   tax: DS.attr('number'),
   total: DS.attr('number'),
-  order: DS.belongsTo('order',{inverse: orderline})
+  order: DS.belongsTo('order')
 });
 
-orderline.reopenClass({ FIXTURES:[]});
 /*
 orderline.reopenClass({
   FIXTURES: [
-    { id: 100, quantity: 1, category: 'Jewelry', cost: 1, tax: .093, total: 1.093},
-    { id: 101, quantity: 1, category: 'Henna', cost: 20, tax: 0, total: 20},
-    { id: 102, quantity: 10, category: 'Books', cost: 10, tax: .93, total: 10.93}
+    { id: 100, quantity: 1, category: 'Jewelry', cost: 1, tax: 0.093, total: 1.093, order: 1},
+    { id: 101, quantity: 1, category: 'Henna', cost: 20, tax: 0, total: 20, order: 1},
+    { id: 102, quantity: 10, category: 'Books', cost: 10, tax: 0.93, total: 10.93, order: 1}
   ]
 });
 */

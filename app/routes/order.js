@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   beforeModel: function() {
-    var newOrderLine = this.store.createRecord('order',{id: 1, orderNumber: '102515_001122'});
-    newOrderLine.save();
+    var newOrder = this.store.createRecord('order',{id: 1, orderNumber: '102515_001122', customerName: 'Garry', orderTotal: 0});
+    newOrder.save();
   },
   model: function() {
     return this.store.find('order',1);

@@ -1,8 +1,8 @@
 <tr>
   <td>&nbsp;</td>
-  <td>{{orderline.quantity}}</td>
-  <td>{{orderline.category}}</td>
-  <td class="text-right">{{orderline.cost}}</td>
-  <td class="text-right">{{orderline.tax}}</td>
-  <td class="text-right">{{orderline.total}}</td>
+  <td>{{input type="input" value=line.quantity classNames="form-control input-lg"}}</td>
+  <td>{{view "select" value=line.category content=productCategories classNames="form-control input-lg"}}</td>
+  <td class="text-right">{{input type="input" value=line.cost classNames="form-control input-lg"}}</td>
+  <td class="text-right">{{line.tax}}</td>
+  <td class="text-right">{{calcTotal}}</td>
 </tr>

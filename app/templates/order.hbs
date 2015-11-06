@@ -1,12 +1,14 @@
+{{! templates/order.hbs }}
+
 <div class="row form-group-lg" style="padding: 10px; background-color: #FF9900;">
   <div class="col-sm-5">
-    {{input type="input" value=customerName classNames="form-control input-lg"}}
+    {{input type="input" value=model.customerName classNames="form-control input-lg"}}
   </div>
   <div class="col-sm-5">
-    {{input type="input" value=customerEmail classNames="form-control input-lg"}}
+    {{input type="input" value=model.customerEmail classNames="form-control input-lg"}}
   </div>
   <div class="col-sm-2">
-    {{input type="input" value=zipCode classNames="form-control input-lg"}}
+    {{input type="input" value=model.zipCode classNames="form-control input-lg"}}
   </div>
 </div>
 
@@ -18,7 +20,7 @@
     {{view "select" value=paymentType content=controllers.application.payMethods classNames="form-control"}}
   </div>
   <div class="col-sm-2">
-    <label><h3 class="text-center">{{orderNumber}}</h3></label>
+    <label><h3 class="text-center">{{model.orderNumber}}</h3></label>
   </div>
 </div>
 
@@ -33,9 +35,22 @@
       <td class="col-sm-1 text-right"><h3>Total</h3></td>
     </tr>
 
+
     {{#each orderline in orderlines}}
-      {{order-line orderline=orderline tagName=''}}
+      {{order-line line=orderline tagName=''}}
     {{/each}}
+
+
+    {{!#each orderline in orderlines}}
+      <!--<tr>
+        <td>&nbsp;</td>
+        <td>{{input type="input" value=orderline.quantity classNames="form-control input-lg"}}</td>
+        <td>{{view "select" value=orderline.category content=controllers.application.productCategories classNames="form-control input-lg"}}</td>
+        <td class="text-right">{{input type="input" value=orderline.cost classNames="form-control input-lg"}}</td>
+        <td class="text-right">{{orderline.tax}}</td>
+        <td class="text-right">{{orderline.controllerProp}}</td>
+      </tr>-->
+    {{!/each}}
 
     <tr>
       <td class="col-sm-1 text-center">

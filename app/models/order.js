@@ -1,3 +1,5 @@
+//-- models/order --//
+
 import DS from 'ember-data';
 
 var order = DS.Model.extend({
@@ -8,12 +10,12 @@ var order = DS.Model.extend({
   salesClerk: DS.attr('string'),
   paymentType: DS.attr('string'),
   orderTotal: DS.attr('number'),
-  orderlines: DS.hasMany('orderline',{async: true, inverse: order})
+  orderlines: DS.hasMany('orderline')
 });
 
+/*
 order.reopenClass({ FIXTURES:[]});
 
-/*
 order.reopenClass({
   FIXTURES: [
     {
