@@ -13,7 +13,7 @@ export default Ember.ObjectController.extend({
     });
     this.set('orderTotal', orderTotal);
   }.observes('orderlines.@each.total'),
-  actions: { 
+  actions: {
     newOrderLine: function(){
       var orderLinesByID = this.model.get('orderlines').mapBy('id');
       var nextId = orderLinesByID.length === 0 ? 1 : Math.max(...orderLinesByID) + 1;
