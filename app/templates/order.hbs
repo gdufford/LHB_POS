@@ -1,5 +1,4 @@
 {{! templates/order.hbs }}
-
 <div class="row form-group-lg" style="padding: 10px; background-color: #FF9900;">
   <div class="col-sm-5">
     {{input type="input" value=model.customerName classNames="form-control input-lg" placeholder="Name"}}
@@ -12,7 +11,7 @@
   </div>
 </div>
 
-<div class="row form-group-lg" style="padding: 10px; background-color: #FF9900;">
+<div style="border-bottom: 3px solid gray" class="row form-group-lg" style="padding: 10px; background-color: #FF9900;">
   <div class="col-sm-5">
     {{view "select" prompt="Choose clerk..." value=salesClerk content=controllers.application.clerkNames classNames="form-control"}}
   </div>
@@ -35,9 +34,9 @@
       <td class="col-sm-1 text-right"><h3>Total</h3></td>
     </tr>
 
-    {{#each orderline in orderlines}}
-      {{order-line line=orderline tagName=''}}
-    {{/each}}
+    {{!#each orderline in orderlines}}
+      {{!order-line line=orderline tagName=''}}
+    {{!/each}}
 
     <tr>
       <td class="col-sm-1 text-center">
@@ -57,3 +56,6 @@
     </tr>
   </tbody>
 </table>
+
+<button {{action 'openModal'}}>MODAL</button><br/>
+<button {{action 'newOrder'}}>NEW ORDER</button>

@@ -5,6 +5,12 @@ export default Ember.Component.extend({
   productCategories: ["Jewelry","Henna","Shoes","Books","Clothing","Gifts"],
   calcLineTotal: function() {
     var lineTotal = Number(this.get('line').get('quantity')) * Number(this.get('line').get('cost'));
-    this.get('line').set('total', lineTotal);
-  }.observes('line.cost','line.quantity')
+    var taxRate = this.get('line').get('category') === 'Henna' ? 0 : 0.093;
+
+    var taxAmount = Math.round((lineTotal * taxRate) * 100) / 100;
+    this.get('line').set('tax',taxAmount);
+
+    this.get('line').set('total', lineTotal + taxAmount);
+    this.get('line').save();
+  }.observes('line.cost','line.quantity','line.category')
 });
