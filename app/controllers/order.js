@@ -14,6 +14,7 @@ export default Ember.ObjectController.extend({
       });
       this.set('orderTotal', Math.round(orderTotal * 100) / 100);
       this.get('model').save();
+        //this.get('test').
     }
   }.observes('orderlines.@each.total'),
   newOrderNumber: function() {
@@ -51,6 +52,7 @@ export default Ember.ObjectController.extend({
       newOrderLine.save();
     },
     newOrderLine: function(){
+		debugger;
       var orderLinesByID = this.model.get('orderlines');
       var nextId = 1;
       if (orderLinesByID !== undefined) {

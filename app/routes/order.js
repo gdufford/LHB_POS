@@ -1,10 +1,12 @@
+//-- routes/order.js --//
+
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  /*beforeModel: function() {
-    var newOrder = this.store.createRecord('order',{id: 1, orderNumber: '111215_090500'});
+  beforeModel: function() {
+    var newOrder = this.store.createRecord('order',{id: 1, orderNumber: '120315_111200'});
     newOrder.save();
-  },*/
+  },
   model: function() {
     //return this.store.find('order',1);
 

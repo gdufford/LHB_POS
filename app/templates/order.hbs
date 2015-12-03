@@ -34,9 +34,9 @@
       <td class="col-sm-1 text-right"><h3>Total</h3></td>
     </tr>
 
-    {{!#each orderline in orderlines}}
-      {{!order-line line=orderline tagName=''}}
-    {{!/each}}
+    {{#each orderline in model.orderlines}}
+      {{order-line line=orderline tagName=''}}
+    {{/each}}
 
     <tr>
       <td class="col-sm-1 text-center">
