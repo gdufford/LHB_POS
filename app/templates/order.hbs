@@ -34,7 +34,7 @@
       <td class="col-sm-1 text-right"><h3>Total</h3></td>
     </tr>
 
-    {{#each orderline in model.orderlines}}
+    {{#each orderline in orderlines}}
       {{order-line line=orderline tagName=''}}
     {{/each}}
 
@@ -48,7 +48,7 @@
     </tr>
     <tr>
       <td class="col-sm-10 text-center" colspan="5">
-        <button id="completeOrderButton" class="btn completeOrderButton" onclick="completeOrderDialog(); return false;">
+        <button {{action 'completeOrder' 'completeordermodal' model}} id="completeOrderButton" class="btn completeOrderButton">
           COMPLETE ORDER
         </button>
       </td>
@@ -57,5 +57,3 @@
   </tbody>
 </table>
 
-<button {{action 'openModal'}}>MODAL</button><br/>
-<button {{action 'newOrder'}}>NEW ORDER</button>

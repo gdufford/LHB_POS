@@ -8,22 +8,22 @@ export default Ember.Route.extend({
     newOrder.save();
   },
   model: function() {
-    //return this.store.find('order',1);
-
-    return this.store.findAll('order');
+    return this.store.find('order',1);
+    //return this.store.findAll('order'); //Frustrating, this won't work, but no error is thrown/indicated
   }, //Model initally empty, order is new, will need to change if a lookup mode is established
   actions: {
-    openModal: function() {
-      //this.controllerFor(modalName).set('model',model);
-      return this.render('modal', {
+    completeOrder: function(toRender,passedModel) {
+      this.controllerFor(toRender).set('model',passedModel);
+      return this.render('completeordermodal', {
         into: 'application',
         outlet: 'modal'
       });
     },
     closeModal: function() {
-      return this.disconnectOutlet({
-        outlet: 'modal',
-        parentView: 'application'
+		this.set('emailReceipt',false);
+		return this.disconnectOutlet({
+			outlet: 'modal',
+			parentView: 'application'
       });
     }
   }
