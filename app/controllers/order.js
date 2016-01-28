@@ -5,6 +5,16 @@ import Ember from 'ember';
 //-- This line was 'Ember.Controller.extend' and was NOT working, the resulting orderline wasn't showing --//
 export default Ember.ObjectController.extend({
   needs: "application",
+  toggleDesc: false,
+  toggleDiscount: false,
+  formColSpan: 5,
+  multipleLines: Ember.computed('orderlines.[]', {
+	 get() {
+		 //return true;
+		 console.log('multipleLines->' + this.get('orderlines').get('length'));
+		 return this.get('orderlines').get('length') > 1;
+	 } 
+  }),
   calcOrderTotal: function() {
     var orderTotal = 0;
     var allorderlines = this.get('orderlines');
@@ -25,8 +35,24 @@ export default Ember.ObjectController.extend({
     var minutes = ("" + today.getMinutes()).length === 1 ? "0" + today.getMinutes() : "" + today.getMinutes();
     var seconds = ("" + today.getSeconds()).length === 1 ? "0" + today.getSeconds() : "" + today.getSeconds();
     return day + month + today.getYear() + "_" + hour + minutes + seconds;
-  },
+  }, 
   actions: {
+	toggleDesc: function() {
+		this.set('toggleDesc', !this.get('toggleDesc'));
+		var formColSpan = this.get('formColSpan');
+		if (this.get('toggleDesc')) 
+			this.set('formColSpan', formColSpan += 1); 
+		else 
+			this.set('formColSpan', formColSpan -= 1);
+	},
+	toggleDiscount: function() {
+		this.set('toggleDiscount', !this.get('toggleDiscount'));
+		var formColSpan = this.get('formColSpan');
+		if (this.get('toggleDiscount')) 
+			this.set('formColSpan', formColSpan += 1); 
+		else 
+			this.set('formColSpan', formColSpan += -1);
+	}, 
     newOrder: function(){
       var ordersById = this.model.get('orders');
       var nextId = 1;
